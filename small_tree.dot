@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="masse vide moyenne <= 1742.8\nmse = 2411.8\nsamples = 2939\nvalue = 169.7"] ;
+1 [label="Puissance maximale (kW) <= 186.0\nmse = 1223.7\nsamples = 1642\nvalue = 142.5"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Puissance maximale (kW) <= 85.5\nmse = 477.5\nsamples = 1517\nvalue = 135.5"] ;
+1 -> 2 ;
+3 [label="mse = 375.6\nsamples = 587\nvalue = 121.9"] ;
+2 -> 3 ;
+4 [label="mse = 345.1\nsamples = 930\nvalue = 144.4"] ;
+2 -> 4 ;
+5 [label="Puissance maximale (kW) <= 318.4\nmse = 2953.5\nsamples = 125\nvalue = 220.1"] ;
+1 -> 5 ;
+6 [label="mse = 834.8\nsamples = 96\nvalue = 195.9"] ;
+5 -> 6 ;
+7 [label="mse = 662.5\nsamples = 29\nvalue = 309.0"] ;
+5 -> 7 ;
+8 [label="Puissance maximale (kW) <= 258.5\nmse = 1801.7\nsamples = 1297\nvalue = 203.9"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="masse vide moyenne <= 2025.2\nmse = 1085.6\nsamples = 1149\nvalue = 196.0"] ;
+8 -> 9 ;
+10 [label="mse = 884.6\nsamples = 412\nvalue = 168.7"] ;
+9 -> 10 ;
+11 [label="mse = 547.4\nsamples = 737\nvalue = 211.3"] ;
+9 -> 11 ;
+12 [label="Puissance maximale (kW) <= 445.0\nmse = 3185.6\nsamples = 148\nvalue = 263.6"] ;
+8 -> 12 ;
+13 [label="mse = 2034.4\nsamples = 141\nvalue = 256.8"] ;
+12 -> 13 ;
+14 [label="mse = 6499.1\nsamples = 7\nvalue = 402.8"] ;
+12 -> 14 ;
+}
