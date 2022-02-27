@@ -113,7 +113,7 @@ def run():
         """
     )
 
-    data=prepare_data('/app/soutenance_co2py/Streamlit/streamlit_app/Data/data2013.csv')
+    data=prepare_data('/app/soutenance_co2py/Streamlit/streamlit_app/data/data2013.csv')
    # st.write(data.head(5))
     st.write(data.describe())
     
@@ -301,5 +301,5 @@ def run():
     )  
     
 
-    resultats=pd.read_excel('/app/soutenance_co2py/Streamlit/streamlit_app/Data/resultats.xlsx')
+    resultats=pd.read_excel('/app/soutenance_co2py/Streamlit/streamlit_app/data/resultats.xlsx')
     st.dataframe(resultats)
