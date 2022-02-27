@@ -23,10 +23,10 @@ def color_(x):
     
  
     
-# Fonction pour charger les données
+# Fonction pour charger les données 
 @st.cache
 def get_data():
-    df=pd.read_csv('/app/soutenance_co2py/Streamlit/data/data2013.csv', sep=';')
+    df=pd.read_csv('./Data/data2013.csv', sep=';')
     df=df.drop(['CO type I (g/km)','HC (g/km)','HC (g/km)','NOX (g/km)','HC+NOX (g/km)','Particules (g/km)'],axis=1)
     df=df.dropna()
     df=df.drop_duplicates(keep = 'first')
@@ -42,10 +42,11 @@ def get_data():
 def run():
 
     st.title(title)
+    st.markdown("---")  
 
     st.markdown(
         """
-        Le jeu de donnée concerne les véhicules neufs homologués en France en 2013.
+        Le jeu de donnée concerne les véhicules neufs homologués en France en 2013. 
 
         ## Préparation des données
 

@@ -103,6 +103,7 @@ def fit_xgb_regression(xtrain, ytrain):
 def run():
 
     st.title(title)
+    st.markdown("---")  
 
     st.markdown(
         """
@@ -113,7 +114,7 @@ def run():
         """
     )
 
-    data=prepare_data('/app/soutenance_co2py/Streamlit/streamlit_app/data/data2013.csv')
+    data=prepare_data('./Data/data2013.csv')
    # st.write(data.head(5))
     st.write(data.describe())
     
@@ -180,13 +181,14 @@ def run():
     st.markdown( '<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Quelques graphiques :</b></p>' , unsafe_allow_html=True)    
     fig, ax = plt.subplots(1,1, figsize=(10,5), sharex=True, sharey=True)
 
+    st.markdown('<ul style="padding-left: 25px;margin-bottom:0;color: black;"><li><b>Comparaison entre émission de CO2 prédite et réelle en fonction de la puissance maximale</b></li>', unsafe_allow_html=True)
     sns.set(font_scale=1)
-    ax.scatter(X_test_poly_mM["Puissance maximale (kW)"], y_test, label="Data points",color="blue")
+    ax.scatter(X_test["Puissance maximale (kW)"], y_test, label="Données réelles",color="blue")
     
-    ax.scatter(X_test_poly_mM["Puissance maximale (kW)"], y_test_predict,
-             color='magenta', lw=1, label="Predictions")
-    ax.set_xlabel("Puissance maximale (kW)")
-    ax.set_ylabel("Prédiction d'émission de CO2")
+    ax.scatter(X_test["Puissance maximale (kW)"], y_test_predict,
+             color='magenta', lw=0.5, label="Predictions")
+    ax.set_ylabel("Emission de CO2")
+    ax.set_xlabel('Puissance maximale')  
     ax.legend()
     st.pyplot(fig)
              
@@ -197,6 +199,7 @@ def run():
 
     fig, ax = plt.subplots(1,1, figsize=(10,10))
     
+    st.markdown('<ul style="padding-left: 25px;margin-top: 1em;margin-bottom:0;color: black;"><li><b>15 variables ayant le plus de poids dans le modèle</b> (analyse basée sur les coefficients de régression)</li>', unsafe_allow_html=True)
     sns.set_style("white")
     ax=sns.barplot(y=Coef_tri2.index,
                 x=Coef_tri2['Coef'],
@@ -254,32 +257,36 @@ def run():
     st.markdown('<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Quelques graphiques :</b></p>' , unsafe_allow_html=True)       
     fig, ax = plt.subplots(1,1, figsize=(10,5), sharex=True, sharey=True)
 
+    st.markdown('<ul style="padding-left: 25px;margin-bottom:0;color: black;"><li><b>Arbre de régression, 3 premiers niveaux</b></li>', unsafe_allow_html=True)    
+    st.image('../images/xgbsmall.png')
+
     # Je prends la masse vide moyenne en abscisse car c'est la variable la plus importante de l'arbre
-    
+    st.markdown('<ul style="padding-left: 25px;margin-top: 1em;margin-bottom:0;color: black;"><li><b>Comparaison entre émission de CO2 prédite et réelle en fonction de la masse vide moyenne</b></li>', unsafe_allow_html=True)    
     ax.scatter(X_test["masse vide moyenne"], y_test, label="Data points",color="blue")
     
     ax.scatter(X_test["masse vide moyenne"], xgb_test_pred,
              color='magenta', lw=1, label="Predictions")
     
     
-    ax.plot([1450, 1450, 2700, 2700, 1450],[270, 400, 400, 270, 270],'darkorchid')
-    plt.annotate('Zone de prédiction un peu moins fiable', xy=(1800, 400), xytext=(1320, 500), arrowprops={'facecolor':'darkorchid'} );
+    ax.plot([1450, 1450, 2950, 2950, 1450],[270, 400, 400, 270, 270],'darkorchid')
+    plt.annotate('Zone de prédiction un peu moins fiable', xy=(1800, 400), xytext=(1320, 435), arrowprops={'facecolor':'darkorchid'} );
     
     ax.set_xlabel("masse vide moyenne")
     ax.set_ylabel("Prédiction d'émission de CO2")
     ax.legend();
     st.pyplot(fig)
-    
-    st.image('/app/soutenance_co2py/Streamlit/images/xgbsmall.png')
-    
+
+
+    st.markdown('<ul style="padding-left: 25px;margin-top: 1em;margin-bottom:0;color: black;"><li><b>Interprétabilité locale avec Shap</b></li>', unsafe_allow_html=True)    
+   
     
     def st_shap(plot, height=None):
         shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
         components.html(shap_html, height=height)
-    st.write('Interprétabilité locale sur la ligne {} de la base de test'.format(rand-1))
+    st.write('Analyse sur la ligne {} de la base de test'.format(rand-1))
     st_shap(graph_shap)
     
-    st.markdown("""<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Bilan :</b></p> 
+    st.markdown("""<p style="color:mediumblue; font-size: 20px;margin-top: 1em;margin-bottom:0;"><b>Bilan :</b></p> 
                 <ul style="list-style-type:disc;line-height:15px;padding-left: 25px;"> 
                 <li>Avantages : Très bon résultat et effet de surapprentissage assez faible.</li>    
                 <li>Inconvénients : Du fait du pd.getdummies il reste tout de même 36 variables.  </li> 
@@ -301,5 +308,5 @@ def run():
     )  
     
 
-    resultats=pd.read_excel('/app/soutenance_co2py/Streamlit/streamlit_app/data/resultats.xlsx')
+    resultats=pd.read_excel('./Data/resultats.xlsx')
     st.dataframe(resultats)

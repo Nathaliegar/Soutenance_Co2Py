@@ -6,7 +6,7 @@ import streamlit as st
 import config
 
 # TODO : you can (and should) rename and add tabs in the ./tabs folder, and import them here.
-from tabs import intro, dataviz, modelisation, demonstration
+from tabs import intro, dataviz, modelisation, demonstration, conclusion
 
 
 st.set_page_config(
@@ -14,9 +14,9 @@ st.set_page_config(
     page_icon="https://datascientest.com/wp-content/uploads/2020/03/cropped-favicon-datascientest-1-32x32.png",
 )
 
-with open("/app/soutenance_co2py/Streamlit/streamlit_app/style.css", "r") as f:
+with open("style.css", "r") as f:
     style = f.read()
-
+    
 
 
 st.markdown(f"<style>{style}</style>", unsafe_allow_html=True)
@@ -30,7 +30,8 @@ TABS = OrderedDict(
         (intro.sidebar_name, intro),
         (dataviz.sidebar_name, dataviz),
         (modelisation.sidebar_name, modelisation),
-        (demonstration.sidebar_name, demonstration)
+        (demonstration.sidebar_name, demonstration),
+        (conclusion.sidebar_name, conclusion)
     ]
 )
 
