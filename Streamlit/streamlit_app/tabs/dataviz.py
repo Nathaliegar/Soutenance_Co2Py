@@ -26,7 +26,7 @@ def color_(x):
 # Fonction pour charger les données
 @st.cache
 def get_data():
-    df=pd.read_csv('/app/soutenance_co2py/Streamlit/streamlit_app/Data/data2013.csv', sep=';')
+    df=pd.read_csv('/app/soutenance_co2py/Streamlit/Data/data2013.csv', sep=';')
     df=df.drop(['CO type I (g/km)','HC (g/km)','HC (g/km)','NOX (g/km)','HC+NOX (g/km)','Particules (g/km)'],axis=1)
     df=df.dropna()
     df=df.drop_duplicates(keep = 'first')
