@@ -14,8 +14,8 @@ st.set_page_config(
     page_icon="https://datascientest.com/wp-content/uploads/2020/03/cropped-favicon-datascientest-1-32x32.png",
 )
 
-#with open("/app/soutenance_co2py/Streamlit/streamlit_app/style.css", "r") as f:
-#    style = f.read()
+with open("/app/soutenance_co2py/Streamlit/streamlit_app/style.css", "r") as f:
+    style = f.read()
 
 
 
