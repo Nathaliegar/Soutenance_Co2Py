@@ -113,7 +113,7 @@ def run():
     st.title(title)
 
    
-    df,data=import_data('./Data/data2013.csv')
+    df,data=import_data('/app/soutenance_co2py/Streamlit/data/data2013.csv')
     
    # st.write(data.shape)
    # st.write(data.describe())
