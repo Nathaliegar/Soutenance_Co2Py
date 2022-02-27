@@ -16,7 +16,8 @@ st.set_page_config(
 
 #with open("style.css", "r") as f:
 #    style = f.read()
- style="""
+
+style="""
  h1,
 h2,
 h3,
