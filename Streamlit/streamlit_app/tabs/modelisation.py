@@ -301,5 +301,5 @@ def run():
     )  
     
 
-    resultats=pd.read_excel('./Data/resultats.xlsx')
+    resultats=pd.read_excel('/app/soutenance_co2py/Streamlit/streamlit_app/Data/resultats.xlsx')
     st.dataframe(resultats)
