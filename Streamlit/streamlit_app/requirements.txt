@@ -5,11 +5,11 @@ PILLOW
 matplotlib==3.5.1
 bokeh==2.4.1
 scipy==1.7.3
-sklearn==1.0.2
-imblearn==0.8.1
-xgboost==1.5.2
+sklearn
+imblearn
+xgboost
 random
-shap==0.40.0
-eli5==0.11.0
+shap
+eli5
 skater
-seaborn==0.11.2
+seaborn
