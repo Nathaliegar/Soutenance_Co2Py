@@ -15,7 +15,7 @@ def run():
 
 
 
-    st.image(Image.open("../images/CO2Py.jpg"))
+    st.image(Image.open("../../images/CO2Py.jpg"))
 
 
     st.title(title)
