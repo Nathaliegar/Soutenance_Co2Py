@@ -109,6 +109,7 @@ def run():
         """
     Les variables conservées sont donc :              
     Carburant / Hybride / Puissance maximale (kW) / type_boite / nombre_vitesses / CO2 (g/km) / gamme / masse vide moyenne
+    Les données sont dédoublonnées suite à la suppression des variables techniques / administratives.
 
     Les variables catégorielles sont traitées via un pd.getdummies. La table de travail contient les données :
         """
@@ -135,7 +136,7 @@ def run():
         """
     )
     
-    st.markdown("Création des jeux de test et d'entraînement : 20% de données en test. La cible est 'CO2 (g/km)<br />'", unsafe_allow_html=True)    
+    st.markdown("Création des jeux de test et d'entraînement : 20% de données en test. La cible est 'CO2 (g/km)'<br />", unsafe_allow_html=True)    
     feats=data.drop(['CO2 (g/km)'],axis=1)
     target=data['CO2 (g/km)']
     X_train, X_test, y_train, y_test = train_test_split(feats, target, test_size=0.2, random_state=1)
@@ -172,9 +173,9 @@ def run():
  
     st.write("""<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Résultats :</b></p>  
              <ul style="list-style-type:disc;line-height:15px;padding-left: 25px;"> 
-             <li>Base d'apprentissage</u> : score = {:.2%}  & rmse = {:.2}.</li>""".format(train_score,train_rmse),"""  
-             <li>Base de test : score = {:.2%}  & rmse = {:.2}.</li>""".format(test_score,test_rmse),"""  
-             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur l'erreur quadratique moyenne.</li>""".format(ecart_score,ecart_rmse)
+             <li>Base d'apprentissage</u> : score = {:.2%}  & rmse = {:.2f}.</li>""".format(train_score,train_rmse),"""  
+             <li>Base de test : score = {:.2%}  & rmse = {:.2f}.</li>""".format(test_score,test_rmse),"""  
+             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur la racine de l'erreur quadratique moyenne.</li>""".format(ecart_score,ecart_rmse)
                , unsafe_allow_html=True)
              
              
@@ -249,9 +250,9 @@ def run():
       
     st.write("""<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Résultats :</b></p>  
              <ul style="list-style-type:disc;line-height:15px;padding-left: 25px;"> 
-             <li>Base d'apprentissage : score = {:.2%}  & rmse = {:.2}.</li> """.format(train_score,train_rmse),"""  
-             <li>Base de test : score = {:.2%}  & rmse = {:.2}.</li> """.format(test_score,test_rmse),"""  
-             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur l'erreur quadratique moyenne.</li> """.format(ecart_score,ecart_rmse)
+             <li>Base d'apprentissage : score = {:.2%}  & rmse = {:.2f}.</li> """.format(train_score,train_rmse),"""  
+             <li>Base de test : score = {:.2%}  & rmse = {:.2f}.</li> """.format(test_score,test_rmse),"""  
+             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur la racine de l'erreur quadratique moyenne.</li> """.format(ecart_score,ecart_rmse)
              , unsafe_allow_html=True)    
     
     st.markdown('<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Quelques graphiques :</b></p>' , unsafe_allow_html=True)       
