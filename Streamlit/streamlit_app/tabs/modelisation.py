@@ -175,7 +175,7 @@ def run():
              <ul style="list-style-type:disc;line-height:15px;padding-left: 25px;"> 
              <li>Base d'apprentissage</u> : score = {:.2%}  & rmse = {:.2f}.</li>""".format(train_score,train_rmse),"""  
              <li>Base de test : score = {:.2%}  & rmse = {:.2f}.</li>""".format(test_score,test_rmse),"""  
-             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur la racine de l'erreur quadratique moyenne.</li>""".format(ecart_score,ecart_rmse)
+             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur l'erreur quadratique moyenne.</li>""".format(ecart_score,ecart_rmse)
                , unsafe_allow_html=True)
              
              
@@ -252,7 +252,7 @@ def run():
              <ul style="list-style-type:disc;line-height:15px;padding-left: 25px;"> 
              <li>Base d'apprentissage : score = {:.2%}  & rmse = {:.2f}.</li> """.format(train_score,train_rmse),"""  
              <li>Base de test : score = {:.2%}  & rmse = {:.2f}.</li> """.format(test_score,test_rmse),"""  
-             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur la racine de l'erreur quadratique moyenne.</li> """.format(ecart_score,ecart_rmse)
+             <li>Effet d'apprentissage : {:.2f} points sur le score & {:2.2%} sur l'erreur quadratique moyenne.</li> """.format(ecart_score,ecart_rmse)
              , unsafe_allow_html=True)    
     
     st.markdown('<p style="color:mediumblue; font-size: 20px;;margin-top: 1em;margin-bottom:0;"><b>Quelques graphiques :</b></p>' , unsafe_allow_html=True)       
