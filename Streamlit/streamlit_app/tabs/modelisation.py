@@ -108,7 +108,7 @@ def run():
     st.markdown(
         """
     Les variables conservées sont donc :              
-    Carburant / Hybride / Puissance maximale (kW) / type_boite / nombre_vitesses / CO2 (g/km) / gamme / masse vide moyenne
+    Carburant / Hybride / Puissance maximale (kW) / type_boite / nombre_vitesses / CO2 (g/km) / gamme / masse vide moyenne  
     Les données sont dédoublonnées suite à la suppression des variables techniques / administratives.
 
     Les variables catégorielles sont traitées via un pd.getdummies. La table de travail contient les données :
